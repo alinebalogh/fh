@@ -1,0 +1,45 @@
+
+.cards{
+
+    .card{
+        border: 1px solid #666;
+        margin: 45px 5px;
+        padding: 1%;
+
+        th, td{
+            text-align: left;
+        }
+    }
+
+    &-hidden{
+        display: none;
+    }    
+
+    .borderless td, .borderless th {
+        border: none;
+    }
+
+}
+
+body{
+    margin: 20px auto;
+    text-align: center;
+}
+
+.btns{
+    display: block;
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+    }
+    .btn{
+        margin: 10px 0;
+    }
+}
+
+.hidden-xs{
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
