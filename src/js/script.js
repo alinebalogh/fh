@@ -1,5 +1,5 @@
-const cardsNode = $('#cards');
-const btnsNode = $('.btn');
+var cardsNode = $('#cards');
+var btnsNode = $('.btn');
  
 function getData(callback){
     $.getJSON("src/data/sales-report.json", callback);
@@ -7,8 +7,8 @@ function getData(callback){
 
 function appendData(data){
     
-    data.forEach(order => {
-        let amount = 0;    
+    data.forEach(function(order) {
+        var amount = 0;    
         var html = `
             <div class="card">
             <table class="table table-sm borderless">
@@ -43,8 +43,8 @@ function appendData(data){
                     <th scope="col">Total</th>
                 </tr>
         `;
-        order.orders.forEach((item) => {
-            amount += item.unitPrice * item.quantity
+        order.orders.forEach(function(item){
+            amount += item.unitPrice * item.quantity;
             html += `<tr class="hidden-xs">    
                 <td>${item.item}</td>
                 <td>${item.itemDescription}</td>
@@ -53,7 +53,7 @@ function appendData(data){
                 <td>${item.unitPrice.toFixed(2)}</td>
                 <td>${(item.unitPrice * item.quantity).toFixed(2)}</td>
             </tr>`;
-        })
+        });
         html += `
         <tr>
             <th>Preço Total</th>
@@ -63,17 +63,17 @@ function appendData(data){
         </table>
         </div>
         ` ;    
-        cardsNode.append(html)
+        cardsNode.append(html);
     });
 }
 
 function buildEventListeners(){
-    btnsNode.on('click', (btn) => {
-        const action = btn.currentTarget.dataset.show;
+    btnsNode.on('click', function(btn){
+        var action = btn.currentTarget.dataset.show;
         if(action === "true"){
-            cardsNode.removeClass('cards-hidden') 
+            cardsNode.removeClass('cards-hidden'); 
         }else{
-            cardsNode.addClass('cards-hidden') 
+            cardsNode.addClass('cards-hidden') ;
         }
     });
 }
